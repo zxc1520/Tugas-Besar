@@ -1,0 +1,83 @@
+<!--R Sunu Raihan Wicaksono-->
+<!-- Afif Qomarul Ghulam -->
+<!--TI 2A-->
+
+<html>
+  <head>
+    <title>Tentang</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="Css.css" />
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var propertiPeta = {
+          center: new google.maps.LatLng(-8.065062959295098, 111.9006872177124),
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
+        var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+        // membuat Marker
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(-8.065062959295098, 111.9006872177124),
+          map: peta,
+          animation: google.maps.Animation.BOUNCE,
+        });
+      }
+
+      google.maps.event.addDomListener(window, "load", initialize);
+    </script>
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <div id="background">
+      <div class="header">
+        <a href="Beranda.html" class="Logo">Burger Shot.</a>
+        <div class="header-right">
+          <a href="Beranda.html">Beranda</a>
+          <a class="active" href="Tentang.html">Tentang</a>
+          <a href="Order.html">Order</a>
+          <a href="Profil.html">Profil</a>
+        </div>
+      </div>
+
+      <!--KONTEN-->
+      <div class="container-satu">
+        <div class="kolom-utama">
+          <h1>Profil Burger Shot</h1>
+          <p>
+            Restoran ini di buka tahun 2021 dengan pembuat bernama R. Sunu Raihan Wicaksono. R. Sunu Raihan Wicaksono sudah menekuni dunia burger sejak lama dan impiannya membuka resto burger begitu besar. Restoran ini berfokus pada menu
+            burger.
+          </p>
+          <p>
+            Kami menyajikan cita rasa burger yang otentik. Kami mendatangkan para chef profesional di bidang burger. Kami juga mendatangkan bahan-bahan segar dari penjual lokal untuk mendorong ekonomi lokal berkembang, dan Kami juga
+            mendatangkan bahan-bahan otentik burger yang tidak terdapat di Indonesia. Adonan kami buat dengan tingkat akurasi tinggi sehingga menghasilkan burger yang lezat.
+          </p>
+          <p>Restoran kami buka setiap hari jam 10.00 - 22.00. Dan alamat kami berada di Jl. Los Santos No. 911, Bogor Kami juga menerima pesanan dalam jumlah besar.</p>
+
+          Contact Person : 911 <br />
+          Instagram : @burgershot <br />
+          Email : burgershot@gmail.com <br /><br />
+
+          <h2>Posisi Restoran Burger Shot</h2>
+          <div id="googleMap" style="width: 100%; height: 380px"></div>
+        </div>
+
+        <div class="sidebar-dua">
+          <img src="" alt="" />
+          <br />
+          <img src="" alt="" />
+          <br />
+          <img src="" alt="" />
+        </div>
+      </div>
+
+      <!--FOOTER-->
+      <div class="footer">
+        <p>© 2021 Burger Shot. All right Reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

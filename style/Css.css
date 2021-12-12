@@ -1,0 +1,244 @@
+/*R Sunu Raihan Wicaksono*/
+/* Afif Qomarul Ghulam */
+/*TI 2A*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,500&display=swap");
+
+/* * {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ecf0f1;
+}
+
+/*otomatisasi ukuran header*/
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  header-right {
+    float: none;
+  }
+}
+
+/*KONTEN UTAMA*/
+/* .konten #background1 img {
+  width: 1503;
+  opacity: 0.3;
+  position: relative;
+} */
+
+#slider,
+#sliderImage1,
+#sliderImage2,
+#sliderImage3,
+#sliderImage4 {
+  margin-top: -55px;
+  margin-left: 800px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.konten {
+  min-height: 60vh;
+  margin: 100px 70px;
+  padding-right: 600px;
+  font-size: 18px;
+  z-index: 2;
+  position: relative;
+}
+
+.konten h2 {
+  color: #2d3436;
+}
+
+.konten p {
+  color: #636e72;
+  margin-top: 25px;
+}
+
+/* .konten h2 {
+  position: absolute;
+  margin: 30px 100px;
+  z-index: 2;
+  color: black;
+  font-size: 30px;
+} */
+
+/* .konten p {
+  position: absolute;
+  margin: 50px 200px;
+  z-index: 2;
+  color: black;
+  text-align: left;
+  font-size: 30px;
+  width: 700px;
+  padding-left: 400px;
+} */
+
+.button {
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #16213e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 65px;
+  margin-left: 0;
+  bottom: 95px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  box-shadow: 0px 8px 2px rgba(0, 0, 0, 0.7);
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*FOOTER*/
+.footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #d63031;
+  color: white;
+}
+
+/*KONTEN UTAMA TENTANG*/
+.container-satu {
+  width: 800px;
+  margin: 5px auto;
+  background-color: #e48900;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  color: white;
+}
+
+.sidebar-dua img {
+  width: 300px;
+  padding-left: 30px;
+}
+
+.background img {
+  top: 50px;
+  width: 2000px;
+}
+
+/*PROFIL CARD*/
+.card-view {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+
+.card img {
+  width: 200px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #e48900;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+}
+
+#background {
+  background-attachment: fixed;
+  background-image: url(img/background.png);
+}
+
+#order_header {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Cambria;
+  color: #f7ea00;
+}
+
+.background_profil {
+  background-attachment: fixed;
+  background-color: #ffee93;
+}
+
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+#slider {
+  padding: 10px 0 10px;
+  position: absolute;
+  width: 40px;
+  height: 500px;
+  top: 289px;
+}
+
+#slider img {
+  width: 500px;
+  height: 350px;
+  position: absolute;
+  margin-left: 40px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+}
