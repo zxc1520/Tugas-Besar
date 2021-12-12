@@ -10,6 +10,8 @@
     <!-- Custom -->
     <link rel="stylesheet" type="text/css" href="style/Css.css" />
     <link rel="stylesheet" href="style/header.css">
+     <!-- Bootstrap core CSS -->
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <script src="jquery-3.5.1.js"></script>
@@ -47,7 +49,7 @@
     </div> -->
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light header">
       <div class="container-fluid">
         <a class="navbar-brand logo" href="#">Burger Shot.</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,12 +58,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="Tentang.html">Tentang</a>
-            <a class="nav-link" href="Order.html">Order</a>
+            <a class="nav-link" href="Tentang.php">Tentang</a>
+            <a class="nav-link" href="Order.php">Order</a>
             <?php
               if ($_SESSION['status'] == 'login') { ?>
                 # code...
-                <a class="nav-link" href="Profil.html">Profil</a>
+                <a class="nav-link" href="Profil.php">Profil</a>
               <?php
               } else { ?>
                 <a class="nav-link" href="loginForm.php">Login</a>
@@ -75,7 +77,7 @@
     <!-- End of Header -->
 
     <!--KONTEN-->
-    <div class="Konten">
+    <div class="Konten flex-shrink-0">
       <h2>BURGER HOUSE TERBAIK DI INDONESIA</h2>
       <p>
         Kami menyajikan burger yang berkualitas tinggi. Dan kami memastikan bahwa burger yang anda pesan berasal dari bahan-bahan yang segar dan didapat dari komoditas lokal. Kami menggunakan bahan-bahan terbaik yang mementingkan mutu dan
@@ -101,13 +103,17 @@
       <img src="" alt="" />
     </div>
 
-    <footer class="bg-danger text-white pt-5 pb-5">
+    <main class="shrink-flex-0">
       <div class="container">
-        <div class="row text-center">
-          <div class="col-md-5">
-            <p>&copy; <?= date("Y");?> Burger Shot. All right Reserved. </p>
-          </div>
-        </div>
+        <h1 class="mt-5">Sticky footer</h1>
+        <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+        <p>Use <a href="/docs/5.0/examples/sticky-footer-navbar/">the sticky footer with a fixed navbar</a> if need be, too.</p>
+      </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-danger text-white">
+      <div class="container">
+        <p>&copy; <?= date("Y") ?> <strong>Burger Shot.</strong> All right Reserved. </p>
       </div>
     </footer>
 
