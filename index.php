@@ -47,47 +47,7 @@
     </script>
   </head>
   <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light header">
-      <div class="container-fluid">
-        <a class="navbar-brand logo" href="#">Burger Shot.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Tentang.php">Tentang</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Profil.php">Profil</a>
-            </li>
-            <?php
-              if ($_SESSION['status'] == 'login') { ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="Order.php">Order</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="userProfile.php">Hi, <?= $_SESSION['username']; ?></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-              <?php
-              } else { ?>
-                <a class="nav-link" href="loginForm.php">Login</a>
-              <?php
-              }
-            ?>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End of Header -->
-
+    <?php include_once('header.php'); ?>
     <!--KONTEN-->
     <div class="Konten shrink-flex-0">
       <h2>BURGER HOUSE TERBAIK DI INDONESIA</h2>
@@ -117,15 +77,7 @@
       <img src="" alt="" />
     </div>
 
-    <!-- <main class="shrink-flex-0">
-      <div class="container">
-        <h1 class="mt-5">Sticky footer</h1>
-        <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
-        <p>Use <a href="/docs/5.0/examples/sticky-footer-navbar/">the sticky footer with a fixed navbar</a> if need be, too.</p>
-      </div>
-    </main> -->
-
-    <footer class="footer mt-auto py-3 bg-danger text-white">
+    <footer class="footer mt-auto pt-3 bg-danger text-white">
       <div class="container">
         <p>&copy; <?= date("Y") ?> <strong>Burger Shot.</strong> All right Reserved. </p>
       </div>

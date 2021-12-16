@@ -1,8 +1,14 @@
 <?php
+    include_once "connection.php";
     session_start();
+
     if ($_SESSION['status'] != 'login') {
         # code...
         echo "<script>console.log('Not logged in yet')</script>";
+    } else {
+        $id = $_SESSION['id'];
+        $query = mysqli_query($conn, "SELECT * FROM user WHERE id='$id'");
+        $row = mysqli_fetch_array($query);
     }
 ?>
 <!DOCTYPE html>
@@ -14,54 +20,39 @@
     <title>Profile - <?= $_SESSION['username']; ?></title>
     <link rel="stylesheet" href="style/Css.css">
     <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
 </head>
 <body>
-    
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light header">
-      <div class="container-fluid">
-        <a class="navbar-brand logo" href="#">Burger Shot.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Tentang.php">Tentang</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Profil.php">Profil</a>
-            </li>
-            <?php
-              if ($_SESSION['status'] == 'login') { ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="Order.php">Order</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="userProfile.php">Hi, <?= $_SESSION['username']; ?></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-              <?php
-              } else { ?>
-                <a class="nav-link" href="loginForm.php">Login</a>
-              <?php
-              }
-            ?>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End of Header -->
-    
+    <?php include_once('header.php'); ?>
     <div class="container">
-        <h2><?= $_SESSION['fullname']; ?></h2>
+        <div class="card" style="margin-top: 5.5rem;">
+            <div class="card-header">
+                <h5>User Profile</h5>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    <input type="hidden" name="id_user" value="<?= $row['id']; ?>">
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Fullname</label>
+                        <input type="text" class="form-control" name="fullname" value="<?= $row['fullname']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" value="<?= $row['username']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" value="<?= $row['password']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="datebirth" class="form-label">Datebirth</label>
+                        <input type="date" class="form-control" name="datebirth" value="<?= $row['datebirth']; ?>">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
