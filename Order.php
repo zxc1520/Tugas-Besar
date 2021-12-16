@@ -1,30 +1,28 @@
 <!--R Sunu Raihan Wicaksono-->
 <!-- Afif Qomarul Ghulam -->
 <!--TI 2A-->
+<?php
+  session_start();
+  error_reporting(0);
+  if ($_SESSION['status'] != 'login') {
+    # code...
+    echo "<script>console.log('Not logged in yet')</script>";
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/header.css" />
-    <link rel="stylesheet" type="text/css" href="stlye/Css.css" />
+    <link rel="stylesheet" type="text/css" href="style/header.css" />
+    <link rel="stylesheet" type="text/css" href="style/Css.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style/bootstrap-4.4.1.css"> -->
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <title>Order</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   </head>
   <body>
-    <!-- HEADER
-    <div class="header">
-      <a href="Beranda.html" class="Logo">Burger Shot.</a>
-      <div class="header-right">
-        <a href="Beranda.html">Beranda</a>
-        <a href="Tentang.html">Tentang</a>
-        <a class="active" href="Order.html">Order</a>
-        <a href="Profil.html">Profil</a>
-      </div>
-    </div> -->
-
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light header">
         <div class="container-fluid">
@@ -36,11 +34,11 @@
             <div class="navbar-nav ms-auto">
               <a class="nav-link" aria-current="page" href="index.php">Home</a>
               <a class="nav-link" href="Tentang.php">Tentang</a>
-              <a class="nav-link active" href="#">Order</a>
+              <a class="nav-link" href="Profil.php">Profil</a>
               <?php
                 if ($_SESSION['status'] == 'login') { ?>
-                  # code...
-                  <a class="nav-link" href="Profil.php">Profil</a>
+                  <a class="nav-link active" href="#">Order</a>
+                  <a class="nav-link" href="logout.php">Logout</a>
                 <?php
                 } else { ?>
                   <a class="nav-link" href="loginForm.php">Login</a>
@@ -54,6 +52,7 @@
     <!-- End of Header -->
 
     <!--JAVASCRIPT-->
+    <div class="container" style="margin-top: 3.5rem;">
     <h1>ORDER</h1>
     <div class="form">
       <form action="post" name="formku">
@@ -115,11 +114,14 @@
         </table>
       </form>
     </div>
-
-    <!--FOOTER-->
-    <div class="footer" id="footer_profile">
-      <p>© 2021 Burger Shot. All right Reserved.</p>
     </div>
+    
+    <footer class="footer mt-auto py-3 bg-danger text-white">
+      <div class="container">
+        <p>&copy; <?= date("Y") ?> <strong>Burger Shot.</strong> All right Reserved. </p>
+      </div>
+    </footer>
+
   </body>
   <script>
     function harga() {

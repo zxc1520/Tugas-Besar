@@ -1,49 +1,50 @@
 <?php
 
     require_once('connection.php');
+   
     session_start();
-    error_reporting(0);
-  
     $msg = '';
     $error = '';
-
-    if (isset($_POST['register'])) {
+    error_reporting(0);
+    if ($_SESSION['status'] != 'login') {
       # code...
-      $id_user = $_POST['id_user'];
-      $id = mysqli_real_escape_string($conn, $id_user);
-      $fullname = $_POST['fullname'];
-      $nama = mysqli_real_escape_string($conn, $fullname);
-      $username = $_POST['username'];
-      $nama_user = mysqli_real_escape_string($conn, $username);
-      $password = $_POST['password'];
-      $password_user = mysqli_real_escape_string($conn, $password);
-      $datebirth = $_POST['datebirth'];
-      $ttl = mysqli_real_escape_string($conn, $datebirth);
-
-      if (!empty(trim($nama)) && !empty(trim($nama_user)) && !empty(trim($password_user)) && !empty(trim($ttl))) {
-          # code...
-          $query = "INSERT INTO user (fullname, username, password, daybirth) VALUES (
-              '$nama',
-              '$nama_user',
-              '$password_user',
-              '$ttl' )";
-          mysqli_query($conn, $query);
-          header("Location: loginForm.php");
-      } else {
-          $error = "Data form tidak boleh ada yang kosong !";
-          #echo '<script>alert("Data tidak boleh kosong");</script>';
-      }
-    } else {
-      echo "<script>console.log('Kesalahan')</script>" . mysqli_error($conn);
+      echo "<script>console.log('Not logged in yet')</script>";
     }
-?>
+
+//     if (isset($_POST['register'])) {
+//       # code...
+//       $fullname = $_POST['fullname'];
+//       $nama = mysqli_real_escape_string($conn, $fullname);
+//       $username = $_POST['username'];
+//       $nama_user = mysqli_real_escape_string($conn, $username);
+//       $password = $_POST['password'];
+//       $password_user = mysqli_real_escape_string($conn, $password);
+//       $datebirth = $_POST['datebirth'];
+//       $ttl = mysqli_real_escape_string($conn, $datebirth);
+
+//       if (!empty(trim($nama)) && !empty(trim($nama_user)) && !empty(trim($password_user)) && !empty(trim($ttl))) {
+//           # code...
+//           $query = "INSERT INTO user (fullname, username, password, daybirth) VALUES (
+//               '$nama',
+//               '$nama_user',
+//               '$password_user',
+//               '$ttl' )";
+//           mysqli_query($conn, $query);
+//       } else {
+//           $error = "Data form tidak boleh ada yang kosong !";
+//           #echo '<script>alert("Data tidak boleh kosong");</script>';
+//       }
+//     } else {
+//       echo "Kesalahan " . mysqli_error($conn);
+//     }
+// ?>
 <!DOCTYPE php>
 <php lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <!-- Custom -->
     <link rel="stylesheet" type="text/css" href="style/Css.css" />
     <link rel="stylesheet" href="style/header.css">
@@ -60,16 +61,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
             <a class="nav-link" href="Tentang.php">Tentang</a>
             <a class="nav-link" href="Profil.php">Profil</a>
             <?php
               if ($_SESSION['status'] == 'login') { ?>
                 <a class="nav-link" href="Order.php">Order</a>
-                <a class="nav-link" href="logout.php">Logout</a>
+                <div class="dropdown">
+                  <a class="nav-link dropdown-toggle" id="dataMenuDropdown" data-bs-toggle="dropdown">More</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">User Profile</a>
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                  </div>
+                </div>
               <?php
               } else { ?>
-                <a class="nav-link" href="loginForm.php">Login</a>
+                <a class="nav-link active" href="loginForm.php">Login</a>
               <?php
               }
             ?>
@@ -79,7 +86,7 @@
     </nav>
     <!-- End of Header -->
 
-    <div class="container" style="margin-top: 2.5rem;">
+    <div class="container" style="margin-top: 1.5rem;">
         <div class="row d-flex justify-content-center">
             <div class="col-sm-4">
             <?php if($error != '') { ?>
@@ -87,13 +94,12 @@
             <?php } ?>
                 <div class="card" style="box-shadow: 0 5px 10px rgba(189, 195, 199,1.0);">
                     <div class="card-body">
-                        <h4>Sign Up</h4>
-                        <form action="" method="POST">
-                          <input type="hidden" name="id_user" value="0">
-                            <div class="mb-3">
-                                <label for="fullname" class="form-label">Fullname</label>
+                        <h4>Sign In</h4>
+                        <form action="login.php" method="POST">
+                            <!-- <div class="mb-3">
+                                <label for="username" class="form-label">Fullname</label>
                                 <input type="text" class="form-control" name="fullname" placeholder="Nama Lengkap">
-                            </div>
+                            </div> -->
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" name="username" placeholder="Username anda">
@@ -102,12 +108,15 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="Password anda">
                             </div>
+                            <!--
                             <div class="mb-3">
-                                <label for="datebirth" class="form-label">Datebirth</label>
+                                <label for="password" class="form-label">Datebirth</label>
                                 <input type="date" class="form-control" name="datebirth" placeholder="YYYY/mm/dd">
                             </div>
+                            -->
                             <div class="mb-3">
-                                <input type="submit" class="btn btn-lg btn-warning mb-1" name="register" value="Register"> 
+                                <input type="submit" class="btn btn-lg btn-warning mb-1" name="register" value="Login"> <br>
+                                <p>Belum memiliki akun? Silahkan <a class="mb-1" href="registerForm.php">registrasi!</a></p>
                             </div>
                         </form>
                     </div>

@@ -60,6 +60,15 @@ body {
   color: #2d3436;
 }
 
+.flex {
+  width: 1300px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .konten p {
   color: #636e72;
   margin-top: 25px;
@@ -152,7 +161,7 @@ body {
   padding-left: 30px;
 }
 
-.background img {
+.background_img {
   top: 50px;
   width: 2000px;
 }

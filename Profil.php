@@ -1,6 +1,14 @@
 <!--R Sunu Raihan Wicaksono-->
 <!-- Afif Qomarul Ghulam -->
 <!--TI 2A-->
+<?php
+  session_start();
+  error_reporting(0);
+  if ($_SESSION['status'] != 'login') {
+    # code...
+    echo "<script>console.log('Not logged in yet')</script>";
+  }
+?>
 
 <html>
   <head>
@@ -34,12 +42,12 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
               <a class="nav-link" aria-current="page" href="index.php">Home</a>
-              <a class="nav-link active " href="Tentang.php">Tentang</a>
-              <a class="nav-link" href="Order.php">Order</a>
+              <a class="nav-link" href="Tentang.php">Tentang</a>
+              <a class="nav-link active" href="Profil.php">Profil</a>
               <?php
                 if ($_SESSION['status'] == 'login') { ?>
-                  # code...
-                  <a class="nav-link" href="Profil.php">Profil</a>
+                  <a class="nav-link" href="Order.php">Order</a>
+                  <a class="nav-link" href="logout.php">Logout</a>
                 <?php
                 } else { ?>
                   <a class="nav-link" href="loginForm.php">Login</a>
@@ -52,8 +60,9 @@
       </nav>
     <!-- End of Header -->
 
-      <!--KONTEN-->>
-      <div class="card">
+    <div class="container">
+       <!--KONTEN-->>
+       <div class="card">
         <img src="mg/profil.jpeg" alt="" />
         <h1>R Sunu Raihan Wicaksono</h1>
         <p class="title">TI2A - 1941720100</p>
@@ -78,6 +87,7 @@
           ><p><button>Contact</button></p></a
         >
       </div>
+    </div>
 
       <!--FOOTER-->
       <div class="footer">
