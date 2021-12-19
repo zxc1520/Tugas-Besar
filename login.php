@@ -6,9 +6,6 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    #For Data
-    $fullname = $_POST['fullname'];
-
     $query = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
     $result = mysqli_query($conn, $query);
 
@@ -16,10 +13,16 @@
       session_start();
 
       $data = mysqli_fetch_assoc($result);
-      $_SESSION['username'] = $username;
-      $_SESSION['fullname'] = $fullname;
-      $_SESSION['status'] = 'login';
-      header("location:index.php");
+      if ($data['level'] == '1') {
+        # code...
+        $_SESSION['username'] = $username;
+        $_SESSION['status'] = 'login';
+        header("location:index.php");
+      } else if ($data['level'] == '2') {
+        $_SESSION['username'] = $username;
+        $_SESSION['status'] = 'login';
+        header("location: admin/index_admin.php");
+      }
     } else {
       echo "<script>alert('error')</script>";
     }

@@ -8,6 +8,33 @@
     # code...
     echo "<script>console.log('Not logged in yet')</script>";
   }
+
+    $id_order = $_POST['id_order'];
+    $nama = $_POST['nama'];
+    $status = $_POST['status'];
+    $jenis = $_POST['jenis'];
+    $jumlah = $_POST['jumlah'];
+    $harga_satu = $_POST['harga_satu'];
+    $total = $_POST['total'];
+
+    if (isset($_POST['submit'])) {
+        # code...
+        $query = "INSERT INTO user_order (id_order, nama, status, jenis, jumlah, harga_satu, total) VALUES (
+            '$id_order',
+            '$nama',
+            '$status',
+            '$jenis',
+            '$jumlah',
+            '$harga_satu',
+            '$total')";
+    
+        if (mysqli_query($conn, $query)) {
+            # code...
+            echo "Berhasil";
+        } else {
+            echo "Kesalahan " . mysqli_error($conn);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,63 +57,42 @@
     <div class="container" style="margin-top: 3.5rem;">
     <h1>ORDER</h1>
     <div class="form">
-      <form action="post" name="formku">
-        <table>
-          <tr>
-            <td>ID Pembeli</td>
-            <td>:</td>
-            <td><input type="text" class="" name="id" /></td>
-          </tr>
-          <tr>
-            <td>Nama Pembeli</td>
-            <td>:</td>
-            <td><input type="text" class="" name="nama" /></td>
-          </tr>
-          <tr>
-            <td>Status Pembeli</td>
-            <td>:</td>
-            <td>
-              <input type="radio" class="" name="status" value="member" />Member
-              <br />
-              <input type="radio" class="" name="status" value="non_member" />Non Member
-            </td>
-          </tr>
-          <tr>
-            <td>Nama Jenis Item</td>
-            <td>:</td>
-            <td>
-              <select name="jenis" id="jenis" onchange="harga()">
-                <option value="reguler">Reguler</option>
-                <option value="heartstopper" selected>Heart Stopper</option>
-                <option value="milkshake">Milkshake</option>
-                <option value="cola">Cola</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Harga Satuan</td>
-            <td>:</td>
-            <td>
-              <input type="number" name="harga_satu" class="" readonly />
-            </td>
-          </tr>
-          <tr>
-            <td>Jumlah Pesanan</td>
-            <td>:</td>
-            <td><input type="number" class="" name="jumlah" /></td>
-          </tr>
-          <tr>
-            <td>Total Harga</td>
-            <td>:</td>
-            <td><input type="number" value="" name="total" size="9" readonly /></td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td><input type="button" name="submit" value="Submit" onclick="receipt()" /></td>
-            <td><input type="reset" name="Reset" value="Reset" /></td>
-          </tr>
-        </table>
+      <form action="post.php" method="POST" name="formku">
+        <input type="text" name="id_order">
+        <div class="mb-3">
+          <label for="name">Nama Pembeli</label>
+          <input type="text" class="form-control" name="nama" />
+        </div>
+        <div class="mb-3">
+          <label for="status">Status Pembeli</label>
+          <input type="radio" class="form-check-input" name="status" value="member" />Member
+          <input type="radio" class="form-check-input" name="status" value="non_member" />Non Member
+        </div>
+        <div class="mb-3">
+          <label for="jenis">Jenis Item</label>
+          <select class="form-select" name="jenis" id="jenis" onchange="harga()">
+            <option value="reguler">Reguler</option>
+            <option value="heartstopper" selected>Heart Stopper</option>
+            <option value="milkshake">Milkshake</option>
+            <option value="cola">Cola</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="harga_satu" class="form-label">Harga Satuan</label>
+          <input type="number" name="harga_satu" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+          <label for="jumlah" class="form-label">Jumlah Pesanan</label>
+          <input type="number" class="form-control" name="jumlah" />
+        </div>
+        <div class="mb-3">
+          <label for="total" class="form-label">Total Harga</label>
+          <input type="number" value="" class="form-control" name="total" size="9" readonly />
+        </div>
+        <div class="mb-3">
+          <input type="submit" class="btn btn-info" name="submit" value="Submit" onclick="receipt()" />
+          <input type="reset" class="btn btn-warning" name="Reset" value="Reset" />
+        </div>
       </form>
     </div>
     </div>
