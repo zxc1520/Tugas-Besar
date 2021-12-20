@@ -19,14 +19,17 @@
       $password_user = mysqli_real_escape_string($conn, $password);
       $datebirth = $_POST['datebirth'];
       $ttl = mysqli_real_escape_string($conn, $datebirth);
+      $usrtype = $_POST['usertype'];
+      $user = mysqli_real_escape_string($conn, $usrtype);
 
-      if (!empty(trim($nama)) && !empty(trim($nama_user)) && !empty(trim($password_user)) && !empty(trim($ttl))) {
+      if (!empty(trim($nama)) && !empty(trim($nama_user)) && !empty(trim($password_user)) && !empty(trim($ttl)) && !empty(trim($user))) {
           # code...
-          $query = "INSERT INTO user (fullname, username, password, daybirth) VALUES (
+          $query = "INSERT INTO user (fullname, username, password, daybirth, level) VALUES (
               '$nama',
               '$nama_user',
               '$password_user',
-              '$ttl' )";
+              '$ttl',
+              '$user' )";
           mysqli_query($conn, $query);
           header("Location: loginForm.php");
       } else {
@@ -80,6 +83,13 @@
                             <div class="mb-3">
                                 <label for="datebirth" class="form-label">Datebirth</label>
                                 <input type="date" class="form-control" name="datebirth" placeholder="YYYY/mm/dd">
+                            </div>
+                            <div class="mb-3">
+                                <label for="usertype" class="form-label">User Type</label>
+                                <select class="form-select" name="usertype">
+                                    <option value="1">User</option>
+                                    <option value="2">Admin</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-lg btn-warning mb-1" name="register" value="Register"> 

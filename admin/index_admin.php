@@ -104,7 +104,9 @@
                                             <td><?= $row['jumlah']; ?></td>
                                             <td><?= $row['harga_satu']; ?></td>
                                             <td>Rp. <?= $row['total']; ?></td>
-                                            <td><a class="btn btn-info" href="">Lunas</a></td>
+                                            <td>
+                                                <a class="btn btn-info" href="hapus.php?id_order=<?= $row['id_order']; ?>">Lunas</a>
+                                            </td>
                                         </tr>
                                         <?php
                                                 }

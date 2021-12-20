@@ -5,26 +5,26 @@
         # code...
         echo "<script>console.log('Not logged in yet')</script>";
     }
+
     include_once "connection.php";
 
-    $id_order = $_POST['id_order'];
-    $nama = $_POST['nama'];
-    $status = $_POST['status'];
-    $jenis = $_POST['jenis'];
-    $jumlah = $_POST['jumlah'];
-    $harga_satu = $_POST['harga_satu'];
-    $total = $_POST['total'];
-
     if (isset($_POST['submit'])) {
-        # code...
+        $id = $_POST['id_order'];
+        $nama = $_POST['nama'];
+        $status = $_POST['status'];
+        $jenis = $_POST['jenis'];
+        $jumlah = $_POST['jumlah'];
+        $harga_satu = $_POST['harga_satu'];
+        $total = $_POST['total'];
+
         $query = "INSERT INTO user_order (id_order, nama, status, jenis, jumlah, harga_satu, total) VALUES (
-            '$id_order',
+            '$id',
             '$nama',
             '$status',
             '$jenis',
             '$jumlah',
             '$harga_satu',
-            '$total')";
+            '$total' )";
     
         if (mysqli_query($conn, $query)) {
             # code...

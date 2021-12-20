@@ -10,7 +10,7 @@
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
-      session_start();
+      //session_start();
 
       $data = mysqli_fetch_assoc($result);
       if ($data['level'] == '1') {

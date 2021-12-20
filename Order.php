@@ -7,34 +7,38 @@
   if ($_SESSION['status'] != 'login') {
     # code...
     echo "<script>console.log('Not logged in yet')</script>";
+    header("location:index.php");
   }
 
-    $id_order = $_POST['id_order'];
-    $nama = $_POST['nama'];
-    $status = $_POST['status'];
-    $jenis = $_POST['jenis'];
-    $jumlah = $_POST['jumlah'];
-    $harga_satu = $_POST['harga_satu'];
-    $total = $_POST['total'];
+    // include_once "connection.php";
 
-    if (isset($_POST['submit'])) {
-        # code...
-        $query = "INSERT INTO user_order (id_order, nama, status, jenis, jumlah, harga_satu, total) VALUES (
-            '$id_order',
-            '$nama',
-            '$status',
-            '$jenis',
-            '$jumlah',
-            '$harga_satu',
-            '$total')";
+    // if (isset($_POST['submit'])) {
+    //     # code...
+        
+    //     $id_order = $_POST['id_order'];
+    //     $nama = $_POST['nama'];
+    //     $status = $_POST['status'];
+    //     $jenis = $_POST['jenis'];
+    //     $jumlah = $_POST['jumlah'];
+    //     $harga_satu = $_POST['harga_satu'];
+    //     $total = $_POST['total'];
+
+    //     $query = "INSERT INTO user_order (nama, status, jenis, jumlah, harga_satu, total) VALUES (
+            
+    //         '$nama',
+    //         '$status',
+    //         '$jenis',
+    //         '$jumlah',
+    //         '$harga_satu',
+    //         '$total')";
     
-        if (mysqli_query($conn, $query)) {
-            # code...
-            echo "Berhasil";
-        } else {
-            echo "Kesalahan " . mysqli_error($conn);
-        }
-    }
+    //     if (mysqli_query($conn, $query)) {
+    //         # code...
+    //         echo "Berhasil";
+    //     } else {
+    //         echo "Kesalahan " . mysqli_error($conn);
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +62,10 @@
     <h1>ORDER</h1>
     <div class="form">
       <form action="post.php" method="POST" name="formku">
-        <input type="text" name="id_order">
+        <input type="text" name="id_order" value="">
         <div class="mb-3">
           <label for="name">Nama Pembeli</label>
-          <input type="text" class="form-control" name="nama" />
+          <input type="text" class="form-control" name="nama" value="<?= $_SESSION['username']; ?>" readonly />
         </div>
         <div class="mb-3">
           <label for="status">Status Pembeli</label>
