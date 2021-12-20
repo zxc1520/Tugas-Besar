@@ -56,7 +56,7 @@
                         <input type="number" value="" class="form-control" name="total" size="9" readonly />
                     </div>
                     <div class="mb-3">
-                        
+                        <label for="status"></label>
                     </div>
                 </form>
             </div>

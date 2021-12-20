@@ -94,7 +94,7 @@
           <input type="number" value="" class="form-control" name="total" size="9" readonly />
         </div>
         <div class="mb-3">
-          <input type="submit" class="btn btn-info" name="submit" value="Submit" onclick="receipt()" />
+          <input type="submit" class="btn btn-info" name="submit" value="Submit" onclick="receipt()"/>
           <input type="reset" class="btn btn-warning" name="Reset" value="Reset" />
         </div>
       </form>
@@ -117,7 +117,7 @@
           harga_satuan = 29500;
           break;
 
-        case "hearstopper":
+        case "heartstopper":
           harga_satuan = 41000;
           break;
 
@@ -153,7 +153,7 @@
           harga_satuan = 29500;
           break;
 
-        case "hearstopper":
+        case "heartstopper":
           harga_satuan = 41000;
           break;
 
